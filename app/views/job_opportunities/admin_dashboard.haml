@@ -5,9 +5,7 @@
       %tr
         %th Company Name
         %th Application Due Date
-        %th Company Location
-        %th Contact Name
-        %th Contact Email
+        %th Location
         %th Salary
         %th Job Title
         %th Application Type
@@ -15,11 +13,9 @@
     %tbody
       - @job_opportunities.each do |job_opportunity|
         %tr
-          %td= link_to job_opportunity.company_name, job_opportunity
+          %td= link_to job_opportunity.company.name, job_opportunity
           %td= job_opportunity.application_due_date
-          %td= job_opportunity.company_location
-          %td= job_opportunity.contact_name
-          %td= job_opportunity.contact_email
+          %td= job_opportunity.location
           %td= job_opportunity.salary
           %td= job_opportunity.job_title
           %td= job_opportunity.application_type

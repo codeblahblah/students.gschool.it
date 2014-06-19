@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140617163458) do
+ActiveRecord::Schema.define(version: 20140618212906) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,6 +24,15 @@ ActiveRecord::Schema.define(version: 20140617163458) do
   end
 
   add_index "answers", ["comprehension_question_id"], name: "index_answers_on_comprehension_question_id", using: :btree
+
+  create_table "applications", force: true do |t|
+    t.string   "resume",             null: false
+    t.string   "cover_letter"
+    t.integer  "user_id"
+    t.integer  "job_opportunity_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "attendance_sheets", force: true do |t|
     t.date     "sheet_date"
@@ -57,6 +66,12 @@ ActiveRecord::Schema.define(version: 20140617163458) do
     t.date     "end_date"
   end
 
+  create_table "companies", force: true do |t|
+    t.string "name"
+    t.string "contact_name"
+    t.string "contact_email"
+  end
+
   create_table "comprehension_questions", force: true do |t|
     t.text     "text"
     t.datetime "created_at"
@@ -81,11 +96,7 @@ ActiveRecord::Schema.define(version: 20140617163458) do
   end
 
   create_table "job_opportunities", force: true do |t|
-    t.string   "company_name",         null: false
-    t.string   "company_location"
-    t.string   "contact_name"
-    t.string   "contact_email"
-    t.string   "contact_number"
+    t.string   "location"
     t.string   "salary"
     t.string   "job_status"
     t.string   "decision"
@@ -96,6 +107,7 @@ ActiveRecord::Schema.define(version: 20140617163458) do
     t.string   "application_due_date"
     t.string   "application_type"
     t.string   "status"
+    t.integer  "company_id"
   end
 
   create_table "my_job_opportunities", force: true do |t|

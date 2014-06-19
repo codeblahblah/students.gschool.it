@@ -1,8 +1,8 @@
-%h2= job_opportunity.company_name
+%h2= job_opportunity.company.name
 %p= job_opportunity.application_due_date
-%p= job_opportunity.company_location
-%p= job_opportunity.contact_name
-%p= job_opportunity.contact_email
+%p= job_opportunity.location
+%p= job_opportunity.company.contact_name
+%p= job_opportunity.company.contact_email
 %p= job_opportunity.salary
 %p= job_opportunity.job_title
 %p= job_opportunity.application_type

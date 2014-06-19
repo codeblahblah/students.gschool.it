@@ -1,0 +1,6 @@
+%h2 Apply!
+= form_for [:job_opportunity, Application.new] do |f|
+  = f.hidden_field :user_id, value: user_session.current_user.id
+  = f.label :resume
+  = f.file_field :resume
+  = f.submit "Apply for this position", class: "action"

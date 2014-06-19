@@ -95,4 +95,35 @@ module ObjectFactories
       s.save!
     end
   end
+
+  def new_company(overrides = {})
+    defaults = {
+      name: 'Pivotal Labs',
+      contact_name: 'Mike',
+      contact_email: 'mike@example.com'
+    }
+    Company.new(defaults.merge(overrides))
+  end
+
+  def create_company(overrides = {})
+    new_company(overrides).tap do |c|
+      c.save!
+    end
+  end
+
+  def create_job_opportunity(overrides = {})
+    new_job_opportunity(overrides).tap do |m|
+      m.save!
+    end
+  end
+
+  def new_job_opportunity(overrides = {})
+    defaults = {
+      company: new_company,
+      location: 'Denver, CO',
+      application_due_date: '07/20/2014',
+      user: new_user
+    }
+    JobOpportunity.new(defaults.merge(overrides))
+  end
 end

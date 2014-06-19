@@ -16,11 +16,36 @@
     %tbody
     - @my_job_opportunities.each do |job|
       %tr
-        %td= job.job_opportunity.company_name
+        %td= job.job_opportunity.company.name
         %td= job.job_opportunity.application_due_date
-        %td= job.job_opportunity.contact_email
+        %td= job.job_opportunity.location
         %td= job.job_opportunity.salary
         %td= job.job_opportunity.job_title
         %td= job.job_opportunity.application_type
         %td= job.job_opportunity.status
+        %td= link_to 'Apply', new_job_opportunity_application_path(job)
+
 %h2 Jobs I Have Applied For:
+.action-table
+  %table.applied_for
+    %thead.job_opportunity
+      %tr
+        %th Company Name
+        %th Application Due Date
+        %th Company Location
+        %th Contact Name
+        %th Contact Email
+        %th Salary
+        %th Job Title
+        %th Application Type
+        %th Job Opportunity Status
+    %tbody
+      - @applied_jobs.each do |job|
+        %tr
+          %td= job.company.name
+          %td= job.application_due_date
+          %td= job.location
+          %td= job.salary
+          %td= job.job_title
+          %td= job.application_type
+          %td= job.status

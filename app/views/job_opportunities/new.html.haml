@@ -3,19 +3,19 @@
   %ul.job_opportunity
     %li
       = f.label :company_name
-      = f.text_field :company_name
+      = f.select(:company_id, options_from_collection_for_select(Company.all, :id, :name))
     %li
       = f.label :application_due_date
       = f.date_field :application_due_date
     %li
-      = f.label :company_location
-      = f.text_field :company_location
+      = f.label :location
+      = f.text_field :location
     %li
-      = f.label :contact_name
-      = f.text_field :contact_name
+      -#= f.label :contact_name
+      -#= f.text_field :contact_name
     %li
-      = f.label :contact_email
-      = f.email_field :contact_email
+      -#= f.label :contact_email
+      -#= f.email_field :contact_email
     %li
       = f.label :salary
       = f.number_field :salary
